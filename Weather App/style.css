@@ -1,0 +1,26 @@
+/* Author: Jakub Orlowski
+    Css stylesheet for the weather app */
+
+QWidget {
+    background-color: #f0f4f8; /* Light grey back */
+}
+QLabel {
+    font-size: 16px;
+    color: #333333;
+}
+QLineEdit {
+    border: 2px solid #cccccc;
+    border-radius: 8px;
+    padding 5px;
+    font-size: 14px
+}
+QPushButton {
+    background-color: #007bff; /*Blue button */
+    color: white;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 16px;
+}
+QPushButton:hover {
+    background-color: #0056b3; /* Dark blue on hover*/
+}
