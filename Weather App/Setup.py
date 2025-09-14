@@ -17,7 +17,7 @@ def install_and_import(package):
         return False
 
 # List of required packages
-required_packages = ["PyQt5", "requests"]
+required_packages = ["PyQt5", "requests", "dotenv"]
 # Checking if packages are installed
 missing_packages = []
 for package in required_packages:
