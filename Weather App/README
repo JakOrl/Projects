@@ -1,0 +1,8 @@
+Weather App project I have worked on and now have finished. In this project I explored a lot of new concepts including utilising GUIs
+Creating setup files that download libraries to allow the program to run. 
+Pulling information, parsing it and displaying it from a API
+-------------------------------------------------------
+To use the WeatherApp:
+Unzip folder, keep ALL of the files in the same folder.
+Run the setup.py application
+Ready to use!!
