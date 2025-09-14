@@ -2,6 +2,7 @@
 
 #Getting API key from enviromental Variable
 import os
+
 from dotenv import load_dotenv
 load_dotenv()
 api_key = os.environ.get('WEATHER_API_KEY')
@@ -94,14 +95,21 @@ class WeatherApp(QMainWindow):
         try:
             response = requests.get(complete_url)
             data = response.json()
-
-            # If 404 is given as a code in the json it will prompt the else statement otherwise itll pull the data
+            # If 404 is given as a code in the json it will prompt the else statement otherwise it'll pull the data
             if "error" not in data:
+                #location info
+                location_data = data["location"]
+                region = location_data["region"]
+                country = location_data["country"]
+                time_zone = location_data["tz_id"]
+
+                #weather info
                 main_data = data["current"]
                 weather_desc = main_data["condition"]["text"]
                 temp = main_data["temp_c"]
                 humidity = main_data["humidity"]
                 weather_icon_url = f'http:{data["current"]["condition"]["icon"]}'
+
 
                 #Download icon and set it
                 image_data = requests.get(weather_icon_url).content
@@ -110,7 +118,8 @@ class WeatherApp(QMainWindow):
                 self.weather_icon_label.setPixmap(pixmap.scaled(QSize(100, 100), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 
                 #Condensing to one f string
-                weather_info = f"Temperature: {temp}c\nHumidity:{humidity}\nDescription:{weather_desc.capitalize()}"
+                weather_info = (f"Location: {region}, {country}.\n Time-Zone: {time_zone}\n "
+                                f"Temperature: {temp}°C\nHumidity:{humidity}\nDescription:{weather_desc.capitalize()}")
                 self.weather_result.setText(weather_info)
 
             else:
@@ -136,4 +145,3 @@ if __name__ == "__main__":
     window.show()
     #Program shuts down on use shutdown of the window
     sys.exit(app.exec_())
-
