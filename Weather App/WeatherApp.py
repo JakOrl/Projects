@@ -46,6 +46,8 @@ class WeatherApp(QMainWindow):
         self.search_button = QPushButton("Get Weather")
         # Empty space for the result of the search to go
         self.weather_result = QLabel("Enter a city to see the weather!")
+        #applying object name for css changes
+        self.weather_result.setObjectName("WeatherResultLabel")
         self.weather_result.setAlignment(Qt.AlignCenter)
         # Place-Holder for the weather icon from the API
         self.weather_icon_label = QLabel()
@@ -62,19 +64,6 @@ class WeatherApp(QMainWindow):
 
         ## Connecting the "get weather" button to a click signal so it can start a event
         self.search_button.clicked.connect(self.get_weather)
-
-    def resizeEvent(self, event):
-        # Called when window is resized
-        # Get new window size
-        new_width = event.size().width()
-
-        # Calc a new font size based on window size
-        new_font_size = max(16, int(new_width / 16))
-        self.weather_result.setStyleSheet(f"font-size: {new_font_size}px; font-weight: bold;")
-
-        # call parents class to make it behave properly
-        super().resizeEvent(event)
-
 
 
     # Defining the function that calls the API's info
